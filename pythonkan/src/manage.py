@@ -3,7 +3,25 @@ import mediapipe as mp
 import keyboard
 import pyautogui
 import math
-
+class clickobj:
+    kyasy:list=[]
+    down:bool=False
+    def add(self,now):
+        self.kyasy.append(now)
+        if(len(self.kyasy)>3):
+            self.kyasy=self.kyasy[1:]
+        self.hantei()
+    def hantei(self):
+        flg=True
+        for pas in self.kyasy:
+            if(pas==self.down):flg=False
+        if flg:
+            if self.down:
+                self.down=False
+                pyautogui.mouseUp()
+            elif not self.down:
+                self.down=True
+                pyautogui.mouseDown()
 def calculate_distance(x1, y1, x2, y2,wh):
     """2点間の距離を計算"""
     return math.sqrt((x2 - x1) ** 2 + (y2*wh - y1*wh) ** 2)
@@ -19,6 +37,7 @@ with mp_hands.Hands(
     model_complexity=1,
     min_detection_confidence=0.5,
     min_tracking_confidence=0.5) as hands:
+    cli=clickobj()
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -48,7 +67,7 @@ with mp_hands.Hands(
             dis=calculate_distance(index_finger_tip.x,index_finger_tip.y,oyayubi_finger_tip.x,oyayubi_finger_tip.y,w/h)
             print(dis<0.06,dis)
             screen_width, screen_height = pyautogui.size()
-            
+            cli.add(dis<0.06)
             hito_x = int(index_finger_tip.x * screen_width)
             hito_y = int(index_finger_tip.y * screen_height)
             oya_x = int(oyayubi_finger_tip.x * screen_width)
@@ -60,7 +79,7 @@ with mp_hands.Hands(
         # 結果を表示
         cv2.imshow('Hand Detection', image)
 
-        if cv2.waitKey(5) & 0xFF == 27:  # Escキーで終了
+        if cv2.waitKey(1) & 0xFF == 27:  # Escキーで終了
             break
 
 cap.release()
