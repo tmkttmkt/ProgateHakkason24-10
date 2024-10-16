@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static ConnectionTest;
 
 namespace PythonConnection
 {
@@ -29,7 +30,7 @@ namespace PythonConnection
             // ここに既存の DataClass をマッピング
             return new Dictionary<string, Type>()
             {
-                {"ExampleType", typeof(DataClass)} // データタイプ名とC#の型をマッピング
+                {"test", typeof(TestDataClass)} // データタイプ名とC#の型をマッピング
             };
         }
 
@@ -38,7 +39,6 @@ namespace PythonConnection
         {
             // Get pre-defined data type
             Dictionary<string, Type> dataToType = DataToType();
-
             // Initialize `correspondingEvents`
             PrepareEvents(dataToType.Values.ToArray());
         }
@@ -62,6 +62,7 @@ namespace PythonConnection
         /// <param name="callback">Callback when data received</param>
         public void RegisterAction(Type dataType, UnityAction<DataClass> callback)
         {
+            Debug.Log(correspondingEvents);
             correspondingEvents[dataType].AddListener(callback);
         }
 
