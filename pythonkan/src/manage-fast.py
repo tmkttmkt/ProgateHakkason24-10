@@ -3,6 +3,7 @@ import mediapipe as mp
 import keyboard
 import pyautogui
 import math
+import time
 class clickobj:
     kyasy:list=[]
     down:bool=False
@@ -27,8 +28,7 @@ def calculate_distance(x1, y1, x2, y2,wh):
     return math.sqrt((x2 - x1) ** 2 + (y2*wh - y1*wh) ** 2)
 # MediaPipeの設定
 mp_hands = mp.solutions.hands
-mp_drawing = mp.solutions.drawing_utils
-mp_drawing_styles = mp.solutions.drawing_styles
+
 
 # カメラの起動
 cap = cv2.VideoCapture(0)
@@ -53,14 +53,7 @@ with mp_hands.Hands(
 
         # 検出された手のランドマークを描画
         if results.multi_hand_landmarks:
-            for hand_landmarks in results.multi_hand_landmarks:
-                # 手のランドマークを描画
-                mp_drawing.draw_landmarks(
-                    image, 
-                    hand_landmarks, 
-                    mp_hands.HAND_CONNECTIONS,
-                    mp_drawing_styles.get_default_hand_landmarks_style(),
-                    mp_drawing_styles.get_default_hand_connections_style())
+            hand_landmarks=results.multi_hand_landmarks[-1]
             index_finger_tip = hand_landmarks.landmark[8]
             oyayubi_finger_tip = hand_landmarks.landmark[4]
             h, w, _ = image.shape
@@ -77,10 +70,7 @@ with mp_hands.Hands(
             print("Exit key detected. Exiting...")
             break
         # 結果を表示
-        cv2.imshow('Hand Detection', image)
-
-        if cv2.waitKey(1) & 0xFF == 27:  # Escキーで終了
-            break
+        time.sleep(1/1000)
 
 cap.release()
 cv2.destroyAllWindows()

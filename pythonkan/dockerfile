@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ベースとなるイメージを宣言
 FROM python:3.11-slim
 
@@ -35,3 +36,43 @@ EXPOSE 8000
 ENV PATH="C:\Users\kema2\OneDrive\ドキュメント\GitHub\hakkason2\pythonkan:${PATH}"
 #dockerコンテナ起動時に実行するコマンド
 CMD ["python","app/src/manage.py"]
+=======
+#ベースとなるイメージを宣言
+FROM python:3.11-slim
+
+#シェルを指定
+SHELL ["/bin/bash", "-c"]
+
+
+#コンテナ内で使用するディレクトリを指定
+WORKDIR /app
+
+#ソフトウェアアップデート
+# 必要なパッケージをインストール
+RUN apt-get update && \
+    apt-get install -y \
+    python3-opencv \
+    ffmpeg \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+
+#PC上の「requirements.txt」を、WORKDIR上にコピー
+COPY requirements.txt ./
+
+#pipインストールの実行
+RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+
+#build中に確認できるように表示
+RUN pip freeze
+
+#PC上のsrcファイルをWORKDIR内にコピー
+COPY src ./src
+
+#コンテナのポート8000を公開
+EXPOSE 8000
+
+ENV PATH="C:\Users\kema2\OneDrive\ドキュメント\GitHub\hakkason2\pythonkan:${PATH}"
+#dockerコンテナ起動時に実行するコマンド
+CMD ["python","src/manage.py"]
+>>>>>>> madiapipe
