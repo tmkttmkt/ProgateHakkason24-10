@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\onedrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\progatehakkason24-10\\baba\\assets\\script\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\assets\\script\\datadecoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\datadecoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\assets\\script\\dataclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\dataclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\onedrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\progatehakkason24-10\\baba\\assets\\script\\pythonconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pythonconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Card.cs",
-              "DocumentMoniker": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\Card.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Card.cs",
-              "ToolTip": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\Card.cs",
-              "RelativeToolTip": "Assets\\Script\\Card.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvw0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PythonConnector.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\PythonConnector.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\PythonConnector.cs",
+              "ToolTip": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\PythonConnector.cs",
+              "RelativeToolTip": "Assets\\Script\\PythonConnector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T02:03:52.329Z",
+              "WhenOpened": "2024-10-15T12:53:12.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataDecoder.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\DataDecoder.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\DataDecoder.cs",
+              "ToolTip": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\DataDecoder.cs",
+              "RelativeToolTip": "Assets\\Script\\DataDecoder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T12:45:45.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataClass.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\DataClass.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\DataClass.cs",
+              "ToolTip": "C:\\Users\\mador\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\ProgateHakkason24-10\\baba\\Assets\\Script\\DataClass.cs",
+              "RelativeToolTip": "Assets\\Script\\DataClass.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T12:33:54.133Z",
               "EditorCaption": ""
             }
           ]
