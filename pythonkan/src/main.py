@@ -26,9 +26,13 @@ class clickobj:
 def calculate_distance(x1, y1, x2, y2,wh):
     """2点間の距離を計算"""
     return math.sqrt((x2 - x1) ** 2 + (y2*wh - y1*wh) ** 2)
+def timeout():
+    global eflg
+    print("timeout")
+    eflg=False
 #インスタンス
 connector = UnityConnector(
-    on_timeout=lambda:print("timeout"),
+    on_timeout=timeout,
     on_stopped=lambda:print("stopped")
 )
 sflg=True
@@ -39,7 +43,7 @@ def on_data_received(data_type, data):
     if(data_type=="req"):
         sflg=data["sflg"]
     elif(data_type=="end"):
-        if sflg:
+        if data["sflg"]:
             eflg=False
 
 print("connecting...")
@@ -93,7 +97,6 @@ with mp_hands.Hands(
                     }
                 )
         # 結果を表示
-        time.sleep(1/1000)
 
 cap.release()
 cv2.destroyAllWindows()

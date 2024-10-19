@@ -32,7 +32,10 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 # カメラの起動
 cap = cv2.VideoCapture(0)
-
+cap.set(cv2.CAP_PROP_FPS,cap.get(cv2.CAP_PROP_FPS))
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+print(cap.get(cv2.CAP_PROP_FPS))
 with mp_hands.Hands(
     model_complexity=1,
     min_detection_confidence=0.5,
