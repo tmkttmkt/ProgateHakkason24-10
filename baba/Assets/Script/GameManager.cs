@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // ƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+    // ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½X
     public static GameManager Instance { get; private set; }
 
-    public NPC npc; // NPC‚ÌƒXƒNƒŠƒvƒg‚ğQÆ
-    public Player player; // ƒvƒŒƒCƒ„[‚ÌƒXƒNƒŠƒvƒg‚ğQÆ
-    public Text resultText; // Ÿ”sŒ‹‰Ê‚ğ•\¦‚·‚éUIƒeƒLƒXƒg
-    private int isPlayerTurn; // Œ»İ‚Ìƒ^[ƒ“‚ªƒvƒŒƒCƒ„[‚©‚Ç‚¤‚©
+    public NPC npc; // NPCï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½Qï¿½ï¿½
+    public Player player; // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½Qï¿½ï¿½
+    public Text resultText; // ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ê‚ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½eï¿½Lï¿½Xï¿½g
+    private int isPlayerTurn; // ï¿½ï¿½ï¿½İ‚Ìƒ^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 
     void Awake()
     {
-        // ƒCƒ“ƒXƒ^ƒ“ƒX‚ğİ’èiƒVƒ“ƒOƒ‹ƒgƒ“‚ÌƒZƒbƒgƒAƒbƒvj
+        // ï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½ï¿½İ’ï¿½iï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ÌƒZï¿½bï¿½gï¿½Aï¿½bï¿½vï¿½j
         if (Instance == null)
         {
             Instance = this;
         }
         else
         {
-            Destroy(gameObject); // •¡”‚ÌGameManager‚ª‘¶İ‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+            Destroy(gameObject); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GameManagerï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
         }
     }
 
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("NPC is not assigned in GameManager!");
         }
 
-        // ƒ‰ƒ“ƒ_ƒ€‚Éƒ^[ƒ“‚ğŒˆ‚ß‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Éƒ^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
         isPlayerTurn = Random.Range(0, 2);
         StartTurn();
     }
@@ -48,18 +48,18 @@ public class GameManager : MonoBehaviour
         if (player == null || npc == null)
         {
             Debug.LogError("Player or NPC is not assigned in StartTurn!");
-            return; // QÆ‚ª null ‚È‚çƒ^[ƒ“‚ğŠJn‚µ‚È‚¢
+            return; // ï¿½Qï¿½Æ‚ï¿½ null ï¿½È‚ï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½nï¿½ï¿½ï¿½È‚ï¿½
         }
 
         if (isPlayerTurn != 0)
         {
             Debug.Log("Player's Turn");
-            player.TakeTurn(); // ƒvƒŒƒCƒ„[‚ªƒJ[ƒh‚ğæ‚é
+            player.TakeTurn(); // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½
         }
         else
         {
             Debug.Log("NPC's Turn");
-            StartCoroutine(NPCTurn()); // NPC‚Ìƒ^[ƒ“‚ğŠJn
+            StartCoroutine(NPCTurn()); // NPCï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½n
         }
     }
 
@@ -69,47 +69,47 @@ public class GameManager : MonoBehaviour
         if (npc == null || player == null || player.hands == null)
         {
             Debug.LogError("NPC or Player is not properly initialized.");
-            yield break; // NPC‚âPlayer‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚È‚¢ê‡AƒRƒ‹[ƒ`ƒ“‚ğI—¹
+            yield break; // NPCï¿½ï¿½Playerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½Aï¿½Rï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½
         }
 
-        // NPC‚Ìƒ^[ƒ“‚Ìˆ—
-        yield return new WaitForSeconds(1f); // NPC‚ÌvlŠÔ‚ğƒVƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
-        npc.PickCard(player.hands); // NPC‚ªƒvƒŒƒCƒ„[‚ÌèD‚©‚çƒJ[ƒh‚ğæ‚é
-        EndTurn(); // ƒ^[ƒ“‚ğI—¹
+        // NPCï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
+        yield return new WaitForSeconds(1f); // NPCï¿½Ìvï¿½lï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Vï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
+        npc.PickCard(player.hands); // NPCï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½Dï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½
+        EndTurn(); // ï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½
     }
 
     public void EndTurn()
     {
-        // ƒyƒA‚ª‚ ‚ê‚Îíœ (ƒvƒŒƒCƒ„[‚ÆNPC‚Ì—¼•û‚Åƒ`ƒFƒbƒN)
+        // ï¿½yï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îíœ (ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½NPCï¿½Ì—ï¿½ï¿½ï¿½ï¿½Åƒ`ï¿½Fï¿½bï¿½N)
         player.CheckForPairs();
         npc.CheckForPairs();
 
-        // Ÿ”sƒ`ƒFƒbƒN
+        // ï¿½ï¿½ï¿½sï¿½`ï¿½Fï¿½bï¿½N
         //if (CheckForWinner()) return;
 
-        // ƒ^[ƒ“‚ğŒğ‘ã
+        // ï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         isPlayerTurn = (isPlayerTurn + 1) % 2;
         StartTurn();
     }
 
     /*bool CheckForWinner()
     {
-        // ƒvƒŒƒCƒ„[‚ªƒWƒ‡[ƒJ[1–‡‚¾‚¯‚Ìê‡
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½Jï¿½[1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
         if (player.hand.Count == 1 && player.hand[0].GetComponent<Card>().number == 14)
         {
             resultText.text = "NPC Wins!";
             Debug.Log("NPC Wins!");
-            return true; // Ÿ”s‚ª‚Â‚¢‚½‚Ì‚Åtrue‚ğ•Ô‚·
+            return true; // ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½trueï¿½ï¿½Ô‚ï¿½
         }
 
-        // NPC‚ªƒWƒ‡[ƒJ[1–‡‚¾‚¯‚Ìê‡
+        // NPCï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½Jï¿½[1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡
         if (npc.hand.Count == 1 && npc.hand[0].GetComponent<Card>().number == 14)
         {
             resultText.text = "Player Wins!";
             Debug.Log("Player Wins!");
-            return true; // Ÿ”s‚ª‚Â‚¢‚½‚Ì‚Åtrue‚ğ•Ô‚·
+            return true; // ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½trueï¿½ï¿½Ô‚ï¿½
         }
 
-        return false; // ‚Ü‚¾Ÿ”s‚ª‚Â‚¢‚Ä‚¢‚È‚¢ê‡
+        return false; // ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Â‚ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡
     }*/
 }

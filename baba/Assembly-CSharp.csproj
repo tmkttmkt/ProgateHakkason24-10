@@ -60,15 +60,15 @@
     <Analyzer Include="C:\Program Files (x86)\2022.3.33f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\PythonConnect\PythonConnector.cs" />
-    <Compile Include="Assets\Script\NPC.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Card.cs" />
-    <Compile Include="Assets\Script\PythonConnect\ConnectionTes.cs" />
+    <Compile Include="Assets\Script\DeckManager.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\NPC.cs" />
     <Compile Include="Assets\Script\PythonConnect\DataDecoder.cs" />
     <Compile Include="Assets\Script\PythonConnect\DataClass.cs" />
-    <Compile Include="Assets\Script\DeckManager.cs" />
+    <Compile Include="Assets\Script\PythonConnect\ConnectionTes.cs" />
+    <Compile Include="Assets\Script\PythonConnect\PythonConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
