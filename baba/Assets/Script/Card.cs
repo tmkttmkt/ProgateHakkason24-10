@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public int number; // ƒJ[ƒh‚Ì”š (1`13: ƒX[ƒg, 14: ƒWƒ‡[ƒJ[)
-    public string suit; // ƒJ[ƒh‚ÌƒX[ƒg (e.g. "Hearts", "Diamonds", etc.)
+    public int number; // ï¿½Jï¿½[ï¿½hï¿½Ìï¿½ï¿½ï¿½ (1ï¿½`13: ï¿½Xï¿½[ï¿½g, 14: ï¿½Wï¿½ï¿½ï¿½[ï¿½Jï¿½[)
+    public string suit; // ï¿½Jï¿½[ï¿½hï¿½ÌƒXï¿½[ï¿½g (e.g. "Hearts", "Diamonds", etc.)
 
     void Start()
     {
@@ -18,8 +18,8 @@ public class Card : MonoBehaviour
 
     }
 
-    // ƒJ[ƒh‚ÌƒyƒA”»’è
-    public bool IsPair(Card other) // public‚ğ’Ç‰Á
+    // ï¿½Jï¿½[ï¿½hï¿½Ìƒyï¿½Aï¿½ï¿½ï¿½ï¿½
+    public bool IsPair(Card other) // publicï¿½ï¿½Ç‰ï¿½
     {
         return this.number == other.number;
     }
