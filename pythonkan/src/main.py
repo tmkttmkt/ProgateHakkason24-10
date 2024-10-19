@@ -4,6 +4,13 @@ import keyboard
 import pyautogui
 import math
 import time
+from UnityConnector import UnityConnector
+
+#インスタンス
+connector = UnityConnector(
+    on_timeout=lambda:print("timeout"),
+    on_stopped=lambda:print("stopped")
+)
 class clickobj:
     kyasy:list=[]
     down:bool=False
@@ -23,6 +30,9 @@ class clickobj:
             elif not self.down:
                 self.down=True
                 pyautogui.mouseDown()
+    def getnow(self):
+        return self.down
+        
 def calculate_distance(x1, y1, x2, y2,wh):
     """2点間の距離を計算"""
     return math.sqrt((x2 - x1) ** 2 + (y2*wh - y1*wh) ** 2)
@@ -59,13 +69,15 @@ with mp_hands.Hands(
             h, w, _ = image.shape
             dis=calculate_distance(index_finger_tip.x,index_finger_tip.y,oyayubi_finger_tip.x,oyayubi_finger_tip.y,w/h)
             print(dis<0.06,dis)
-            screen_width, screen_height = pyautogui.size()
             cli.add(dis<0.06)
-            hito_x = int(index_finger_tip.x * screen_width)
-            hito_y = int(index_finger_tip.y * screen_height)
-            oya_x = int(oyayubi_finger_tip.x * screen_width)
-            oya_y = int(oyayubi_finger_tip.y * screen_height)
-            pyautogui.moveTo((hito_x+oya_x)/2,(hito_y+oya_y)/2)  
+            connector.send(
+                "test",
+                {
+                    "x":(index_finger_tip.x+oyayubi_finger_tip.x)/2,
+                    "y":(index_finger_tip.y+oyayubi_finger_tip.y)/2,
+                    "mousedown":cli.getnow(),
+                }
+            )
         if keyboard.is_pressed('esc') or keyboard.is_pressed('q'):
             print("Exit key detected. Exiting...")
             break
