@@ -533,6 +533,8 @@ MonoBehaviour:
   playerHand: {fileID: 1297706815}
   npcHand: {fileID: 1693670391}
   cardBackPrefab: {fileID: 2760377111869021340, guid: 237558ee876ced94d8b534ee1fd703c6, type: 3}
+  Player_deck: {fileID: 1297706819}
+  NPC_deck: {fileID: 1693670395}
 --- !u!4 &877694700
 Transform:
   m_ObjectHideFlags: 0
