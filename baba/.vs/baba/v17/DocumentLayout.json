@@ -1,26 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\",
+  "WorkspaceRootPath": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\assets\\script\\datadecoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\datadecoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\downloads\\progatehakkason24-10-unitysettingtest\\baba\\assets\\script\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\kema2\\onedrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\github\\hakkason2\\baba\\assets\\script\\connectiontes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\connectiontes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\downloads\\progatehakkason24-10-unitysettingtest\\baba\\assets\\script\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\assets\\script\\dataclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\dataclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\assets\\script\\pythonconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pythonconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\downloads\\progatehakkason24-10-unitysettingtest\\baba\\assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|c:\\users\\mador\\downloads\\progatehakkason24-10-unitysettingtest\\baba\\assets\\script\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B0C8E04-C267-24AB-59D7-CD18794A4361}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConnectionTes.cs",
-              "DocumentMoniker": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\ConnectionTes.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\ConnectionTes.cs",
-              "ToolTip": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\ConnectionTes.cs",
-              "RelativeToolTip": "Assets\\Script\\ConnectionTes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "NPC.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\NPC.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\NPC.cs",
+              "ToolTip": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\NPC.cs",
+              "RelativeToolTip": "Assets\\Script\\NPC.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:23:47.323Z",
+              "WhenOpened": "2024-10-19T10:37:22.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player.cs",
+              "ToolTip": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\Player.cs",
+              "RelativeToolTip": "Assets\\Script\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T10:37:11.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DataClass.cs",
-              "DocumentMoniker": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\DataClass.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\DataClass.cs",
-              "ToolTip": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\DataClass.cs",
-              "RelativeToolTip": "Assets\\Script\\DataClass.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\GameManager.cs",
+              "ToolTip": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Script\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:23:44.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataDecoder.cs",
-              "DocumentMoniker": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\DataDecoder.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\DataDecoder.cs",
-              "ToolTip": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\DataDecoder.cs",
-              "RelativeToolTip": "Assets\\Script\\DataDecoder.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAADgvygAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:23:40.35Z",
+              "WhenOpened": "2024-10-19T10:22:44.431Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PythonConnector.cs",
-              "DocumentMoniker": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\PythonConnector.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\PythonConnector.cs",
-              "ToolTip": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\PythonConnector.cs",
-              "RelativeToolTip": "Assets\\Script\\PythonConnector.cs",
-              "ViewState": "AgIAALgAAAAAAAAAAAAjwMgAAAAzAAAAAAAAAA==",
+              "Title": "DeckManager.cs",
+              "DocumentMoniker": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\DeckManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\DeckManager.cs",
+              "ToolTip": "C:\\Users\\mador\\Downloads\\ProgateHakkason24-10-UnitySettingTest\\baba\\Assets\\Script\\DeckManager.cs",
+              "RelativeToolTip": "Assets\\Script\\DeckManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:23:29.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\GameManager.cs",
-              "ToolTip": "C:\\Users\\kema2\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\hakkason2\\baba\\Assets\\Script\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Script\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:21:34.972Z"
+              "WhenOpened": "2024-10-19T10:20:41.18Z",
+              "EditorCaption": ""
             }
           ]
         }
