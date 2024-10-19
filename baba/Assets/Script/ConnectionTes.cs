@@ -6,20 +6,6 @@ using UnityEngine;
 
 public class ConnectionTest : MonoBehaviour
 {
-    //Python‚Ö‘—M‚·‚éƒf[ƒ^Œ`®
-    private class SendingData
-    {
-        public SendingData(int testValue0, List<float> testValue1)
-        {
-            this.testValue0 = testValue0;
-            this.testValue1 = testValue1;
-        }
-
-        public int testValue0;
-
-        [SerializeField]
-        private List<float> testValue1;
-    }
     private class flg
     {
         public flg(bool testValue0)
@@ -32,11 +18,11 @@ public class ConnectionTest : MonoBehaviour
 
     void Start()
     {
-        //ƒf[ƒ^óM‚ÌƒR[ƒ‹ƒoƒbƒN‚ğ“o˜^
+        //ï¿½fï¿½[ï¿½^ï¿½ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½ÌƒRï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½Nï¿½ï¿½oï¿½^
         PythonConnector.instance.RegisterAction(typeof(HandDataClass), OnDataReceived);
         PythonConnector.instance.RegisterAction(typeof(TestDataClass), OnTestDataReceived);
 
-        //Python‚Ö‚ÌÚ‘±‚ğŠJn
+        //Pythonï¿½Ö‚ÌÚ‘ï¿½ï¿½ï¿½ï¿½Jï¿½n
         if (PythonConnector.instance.StartConnection())
         {
             Debug.Log("Connected");
@@ -52,6 +38,7 @@ public class ConnectionTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PythonConnector.instance.StopConnection();
+            PythonConnector.instance.Send("end",new flg(true));
             Debug.Log("Stop");
         }
         if (Input.GetKeyDown(KeyCode.T))
@@ -75,16 +62,16 @@ public class ConnectionTest : MonoBehaviour
     {
         Debug.Log("Stopped");
     }
-    // x‚Æy‚ª0~1‚Ì”ÍˆÍ‚ÅAƒ[ƒ‹ƒhÀ•W‚ğæ“¾‚·‚éŠÖ”
+    // xï¿½ï¿½yï¿½ï¿½0~1ï¿½Ì”ÍˆÍ‚ÅAï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½Öï¿½
     public Vector3 GetWorldPosition(float x, float y)
     {
         Camera mainCamera = Camera.main;
 
-        // ‰æ–Ê‚ÌƒXƒNƒŠ[ƒ“À•W‚É•ÏŠ·ix‚Æy‚ğ0~1‚Ì”ÍˆÍ‚ÅŠ|‚¯‚éj
+        // ï¿½ï¿½Ê‚ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½É•ÏŠï¿½ï¿½ixï¿½ï¿½yï¿½ï¿½0~1ï¿½Ì”ÍˆÍ‚ÅŠ|ï¿½ï¿½ï¿½ï¿½j
         float screenX = x * Screen.width;
         float screenY = y * Screen.height;
 
-        // ƒXƒNƒŠ[ƒ“À•W‚ğƒ[ƒ‹ƒhÀ•W‚É•ÏŠ·
+        // ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½É•ÏŠï¿½
         Vector3 screenPosition = new Vector3(screenX, screenY, mainCamera.nearClipPlane);
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(screenPosition);
 
@@ -93,9 +80,9 @@ public class ConnectionTest : MonoBehaviour
     public void OnDataReceived(DataClass data)
     {
         HandDataClass mainmata = data as HandDataClass;
-        transform.position = GetWorldPosition(mainmata.x, mainmata.y);
+        transform.position = GetWorldPosition(mainmata.x, 1-mainmata.y);
     }
-    //ƒf[ƒ^óM‚ÌƒR[ƒ‹ƒoƒbƒN
+    //ï¿½fï¿½[ï¿½^ï¿½ï¿½Mï¿½ï¿½ï¿½ÌƒRï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½N
     public void OnTestDataReceived(DataClass data)
     {
         TestDataClass testData = data as TestDataClass;
@@ -112,19 +99,14 @@ public class ConnectionTest : MonoBehaviour
             UnityEngine.Random.Range(0.1f, 0.9f),
             UnityEngine.Random.Range(0.1f, 0.9f)
         };
-        SendingData sendingData = new SendingData(v1, v2);
-
-        Debug.Log("Sending Data: " + v1 + ", " + v2[0] + ", " + v2[1]);
-
-        PythonConnector.instance.Send("test", sendingData);
     }
-    // DataClass‚ÍPythonConnector‚ªg—p‚·‚éŠî’êƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚¾‚Æ‰¼’è
+    // DataClassï¿½ï¿½PythonConnectorï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ü‚ï¿½ï¿½ÍƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½ï¿½ï¿½Æ‰ï¿½ï¿½ï¿½
     public class TestDataClass : DataClass
     {
-        public double testValue0; // óM‚·‚é®”’l‚É‘Î‰
-        public List<float> v1; // óM‚·‚é•‚“®¬”“_ƒŠƒXƒg‚É‘Î‰
+        public double testValue0; // ï¿½ï¿½Mï¿½ï¿½ï¿½é®ï¿½ï¿½ï¿½lï¿½É‘Î‰ï¿½
+        public List<float> v1; // ï¿½ï¿½Mï¿½ï¿½ï¿½é•‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Xï¿½gï¿½É‘Î‰ï¿½
 
-        // ƒf[ƒ^‚ğ‰Šú‰»‚·‚é‚½‚ß‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌƒRï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
         public TestDataClass(float testValue0, List<float> v1)
         {
             this.testValue0 = testValue0;
@@ -136,7 +118,7 @@ public class ConnectionTest : MonoBehaviour
         public float x;
         public float y;
         public bool mousedown;
-        // ƒf[ƒ^‚ğ‰Šú‰»‚·‚é‚½‚ß‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌƒRï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
         public HandDataClass(float x, float y, bool mousedown)
         {
             this.x = x;
