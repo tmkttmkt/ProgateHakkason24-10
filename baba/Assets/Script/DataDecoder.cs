@@ -30,7 +30,8 @@ namespace PythonConnection
             // ここに既存の DataClass をマッピング
             return new Dictionary<string, Type>()
             {
-                {"test", typeof(TestDataClass)} // データタイプ名とC#の型をマッピング
+                {"test", typeof(TestDataClass)}, // データタイプ名とC#の型をマッピング
+                {"main", typeof(HandDataClass)} // データタイプ名とC#の型をマッピング
             };
         }
 

@@ -1,5 +1,6 @@
 from UnityConnector import UnityConnector
 
+import time
 #インスタンス
 connector = UnityConnector(
     on_timeout=lambda:print("timeout"),
@@ -21,17 +22,11 @@ print("connected")
 
 #デモ用のループ
 while(True):
-    #Enterで送信を開始（入力内容は送信内容と関係ない）
-    input_data = input()
-
-    #Unityへ停止命令
-    if input_data == "q":
-        connector.stop_connection()
-        break
+    time.sleep(1/1000)
 
     #送るデータをdictionary形式で
     data = {
-        "testValue0": 334,
+        "testValue0": 334.442,
         "testValue1": [0.54,0.23,0.12,],
     }
     
@@ -39,6 +34,6 @@ while(True):
 
     #Unityへ送る
     connector.send(
-        "test",
+        "test2",
         data
     )
