@@ -6,28 +6,23 @@ using UnityEngine;
 
 public class ConnectionTest : MonoBehaviour
 {
-    //Python‚Ö‘—M‚·‚éƒf[ƒ^Œ`®
-    [Serializable]
-    private class SendingData
+    private class flg
     {
-        public SendingData(int testValue0, List<float> testValue1)
+        public flg(bool testValue0)
         {
-            this.testValue0 = testValue0;
-            this.testValue1 = testValue1;
+            this.sflg= testValue0;
         }
 
-        public int testValue0;
-
-        [SerializeField]
-        private List<float> testValue1;
+        public bool sflg;
     }
 
     void Start()
     {
-        //ƒf[ƒ^óM‚ÌƒR[ƒ‹ƒoƒbƒN‚ğ“o˜^
-        PythonConnector.instance.RegisterAction(typeof(TestDataClass), OnDataReceived);
+        //ï¿½fï¿½[ï¿½^ï¿½ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½ÌƒRï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½Nï¿½ï¿½oï¿½^
+        PythonConnector.instance.RegisterAction(typeof(HandDataClass), OnDataReceived);
+        PythonConnector.instance.RegisterAction(typeof(TestDataClass), OnTestDataReceived);
 
-        //Python‚Ö‚ÌÚ‘±‚ğŠJn
+        //Pythonï¿½Ö‚ÌÚ‘ï¿½ï¿½ï¿½ï¿½Jï¿½n
         if (PythonConnector.instance.StartConnection())
         {
             Debug.Log("Connected");
@@ -43,7 +38,18 @@ public class ConnectionTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PythonConnector.instance.StopConnection();
+            PythonConnector.instance.Send("end",new flg(true));
             Debug.Log("Stop");
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("T");
+            PythonConnector.instance.Send("req",new flg(true));
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("F");
+            PythonConnector.instance.Send("req",new flg(false));
         }
     }
 
@@ -56,46 +62,68 @@ public class ConnectionTest : MonoBehaviour
     {
         Debug.Log("Stopped");
     }
+    // xï¿½ï¿½yï¿½ï¿½0~1ï¿½Ì”ÍˆÍ‚ÅAï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½Öï¿½
+    public Vector3 GetWorldPosition(float x, float y)
+    {
+        Camera mainCamera = Camera.main;
 
-    //ƒf[ƒ^óM‚ÌƒR[ƒ‹ƒoƒbƒN
+        // ï¿½ï¿½Ê‚ÌƒXï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½É•ÏŠï¿½ï¿½ixï¿½ï¿½yï¿½ï¿½0~1ï¿½Ì”ÍˆÍ‚ÅŠ|ï¿½ï¿½ï¿½ï¿½j
+        float screenX = x * Screen.width;
+        float screenY = y * Screen.height;
+
+        // ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½É•ÏŠï¿½
+        Vector3 screenPosition = new Vector3(screenX, screenY, mainCamera.nearClipPlane);
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(screenPosition);
+
+        return worldPosition;
+    }
     public void OnDataReceived(DataClass data)
     {
-        //DataClassŒ^‚Å“n‚³‚ê‚Ä‚µ‚Ü‚¤‚½‚ßA–¾¦“I‚ÉŒ^•ÏŠ·
+        HandDataClass mainmata = data as HandDataClass;
+        transform.position = GetWorldPosition(mainmata.x, 1-mainmata.y);
+    }
+    //ï¿½fï¿½[ï¿½^ï¿½ï¿½Mï¿½ï¿½ï¿½ÌƒRï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½N
+    public void OnTestDataReceived(DataClass data)
+    {
         TestDataClass testData = data as TestDataClass;
 
-        //ó‚¯æ‚èŒ‹‰Ê•\¦
         Debug.Log("testValue0: " + testData.testValue0);
         foreach (float v in testData.v1)
         {
             Debug.Log("testValue1: " + v);
         }
 
-        //Python‘¤‚Ö‘—‚éƒf[ƒ^‚ğ¶¬
         int v1 = UnityEngine.Random.Range(0, 100);
         List<float> v2 = new List<float>()
         {
             UnityEngine.Random.Range(0.1f, 0.9f),
             UnityEngine.Random.Range(0.1f, 0.9f)
         };
-        SendingData sendingData = new SendingData(v1, v2);
-
-        Debug.Log("Sending Data: " + v1 + ", " + v2[0] + ", " + v2[1]);
-
-        //Python‘¤‚Ö‘—M
-        PythonConnector.instance.Send("test", sendingData);
     }
-
-    // DataClass‚ÍPythonConnector‚ªg—p‚·‚éŠî’êƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚¾‚Æ‰¼’è
+    // DataClassï¿½ï¿½PythonConnectorï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Ü‚ï¿½ï¿½ÍƒCï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½ï¿½ï¿½Æ‰ï¿½ï¿½ï¿½
     public class TestDataClass : DataClass
     {
-        public int testValue0; // óM‚·‚é®”’l‚É‘Î‰
-        public List<float> v1; // óM‚·‚é•‚“®¬”“_ƒŠƒXƒg‚É‘Î‰
+        public double testValue0; // ï¿½ï¿½Mï¿½ï¿½ï¿½é®ï¿½ï¿½ï¿½lï¿½É‘Î‰ï¿½
+        public List<float> v1; // ï¿½ï¿½Mï¿½ï¿½ï¿½é•‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Xï¿½gï¿½É‘Î‰ï¿½
 
-        // ƒf[ƒ^‚ğ‰Šú‰»‚·‚é‚½‚ß‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
-        public TestDataClass(int testValue0, List<float> v1)
+        // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌƒRï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+        public TestDataClass(float testValue0, List<float> v1)
         {
             this.testValue0 = testValue0;
             this.v1 = v1;
+        }
+    }
+    public class HandDataClass : DataClass
+    {
+        public float x;
+        public float y;
+        public bool mousedown;
+        // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌƒRï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+        public HandDataClass(float x, float y, bool mousedown)
+        {
+            this.x = x;
+            this.y = y;
+            this.mousedown = mousedown;
         }
     }
 

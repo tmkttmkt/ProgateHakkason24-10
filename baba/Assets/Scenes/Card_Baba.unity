@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,74 +316,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &502123624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 502123627}
-  - component: {fileID: 502123626}
-  - component: {fileID: 502123625}
-  m_Layer: 0
-  m_Name: PythonConnector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &502123625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502123624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b0cb5b295fa644bbfcf4bae6ef2a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ipAddress: 127.0.0.1
-  portPython: 50001
-  portThis: 50002
-  bufferSize: 8192
-  onTimeOut:
-    m_PersistentCalls:
-      m_Calls: []
-  onStopped:
-    m_PersistentCalls:
-      m_Calls: []
-  finishString: end!
---- !u!114 &502123626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502123624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0795bcc56e4234ea2b58d16b50001c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &502123627
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502123624}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2671.2292, y: 1183.0629, z: -14.171938}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524801674
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524801676}
   - component: {fileID: 524801675}
+  - component: {fileID: 524801677}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -414,10 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c6622bf5a7bce45898b45d9d70083d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHand: {fileID: 1297706815}
-  enemyHand: {fileID: 1693670391}
-  discardPile: {fileID: 216639493}
-  replayButton: {fileID: 0}
+  npc: {fileID: 0}
+  player: {fileID: 0}
+  resultText: {fileID: 0}
 --- !u!4 &524801676
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5696aec29404ce74da99e6cf6786eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 1693670395}
+  npc: {fileID: 0}
   hands:
   - {fileID: 1297706814}
 --- !u!1 &1298913985
@@ -892,6 +823,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693670390}
   m_CullTransparentMesh: 1
+--- !u!114 &1693670395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693670390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f09cbbf4d51b1438b8921f0f41bf25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hands: []
+  field: []
 --- !u!1 &2136488833
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,9 +847,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2136488838}
   - component: {fileID: 2136488837}
-  - component: {fileID: 2136488836}
-  - component: {fileID: 2136488835}
-  - component: {fileID: 2136488834}
+  - component: {fileID: 2136488841}
+  - component: {fileID: 2136488840}
+  - component: {fileID: 2136488839}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -912,53 +857,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2136488834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136488833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df117ee153c80a34083b17c971172f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2136488835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136488833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b0cb5b295fa644bbfcf4bae6ef2a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ipAddress: 127.0.0.1
-  portPython: 50001
-  portThis: 50002
-  bufferSize: 8192
-  onTimeOut:
-    m_PersistentCalls:
-      m_Calls: []
-  onStopped:
-    m_PersistentCalls:
-      m_Calls: []
-  finishString: end!
---- !u!114 &2136488836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136488833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0795bcc56e4234ea2b58d16b50001c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &2136488837
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1026,6 +924,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2136488839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136488833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05f503e43971d44488bf60006412f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ipAddress: 127.0.0.1
+  portPython: 50001
+  portThis: 50002
+  bufferSize: 8192
+  onTimeOut:
+    m_PersistentCalls:
+      m_Calls: []
+  onStopped:
+    m_PersistentCalls:
+      m_Calls: []
+  finishString: end!
+--- !u!114 &2136488840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136488833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f265d3837c73701458a6e03f580f15ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2136488841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136488833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218985852f540ce4badb98d9585044fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1035,8 +980,4 @@ SceneRoots:
   - {fileID: 877694700}
   - {fileID: 1298913989}
   - {fileID: 551093604}
-  - {fileID: 502123627}
-  - {fileID: 1298913989}
-  - {fileID: 551093604}
-  - {fileID: 502123627}
   - {fileID: 2136488838}
