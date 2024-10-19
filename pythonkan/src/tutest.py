@@ -55,7 +55,7 @@ print("connected")
 
 
 
-
+flg=True
 while eflg:
     if sflg:
         time.sleep(1/1000)
