@@ -2,6 +2,8 @@ Library/
 library/
 Temp/
 temp/
+Logs/
+logs/
 Obj/ 
 obj/ 
 Build/ 
