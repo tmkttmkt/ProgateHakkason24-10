@@ -69,6 +69,8 @@ public class DeckManager : MonoBehaviour
             {
                 card.transform.SetParent(npcHand);
                 NPC_deck.hands.Add(tempDeck[i]);
+                Debug.Log("SetCardFaceDown");
+                NPC_deck.SetCardFaceDown(tempDeck[i]); // 配られたカードを裏向きに設定
             }
             // カードが配られた後はデッキから削除
             deck.Remove(card);

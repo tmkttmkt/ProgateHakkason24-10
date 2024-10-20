@@ -90,3 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 9
   suit: club
+  isFaceUp: 1
+  faceUpSprite: {fileID: 21300000, guid: 0dd4642329d428c469e77d4fff57d3bf, type: 3}
+  faceDownSprite: {fileID: 21300000, guid: 25c237be43fe5f34680be5a464004ea3, type: 3}

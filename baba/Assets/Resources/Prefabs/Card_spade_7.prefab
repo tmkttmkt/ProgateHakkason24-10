@@ -90,3 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 7
   suit: spade
+  isFaceUp: 1
+  faceUpSprite: {fileID: 21300000, guid: 91f97c68605a7464fa6b8cea9c6f12ff, type: 3}
+  faceDownSprite: {fileID: 21300000, guid: 25c237be43fe5f34680be5a464004ea3, type: 3}

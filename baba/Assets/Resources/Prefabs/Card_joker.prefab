@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4308181298596773118}
   - component: {fileID: 6167030771564198933}
-  - component: {fileID: 1126944471050754944}
   - component: {fileID: 8534840625918500507}
+  - component: {fileID: -1651179755403661898}
   m_Layer: 5
   m_Name: Card_joker
   m_TagString: Untagged
@@ -46,7 +46,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4833935922243343018}
   m_CullTransparentMesh: 1
---- !u!114 &1126944471050754944
+--- !u!114 &8534840625918500507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833935922243343018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73747c6f173fb934fac1b7db1409fa3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
+  suit: joker
+  isFaceUp: 0
+  faceUpSprite: {fileID: 21300000, guid: f5b5208ef4a597d4395a2ec52a4d5f0d, type: 3}
+  faceDownSprite: {fileID: 21300000, guid: 25c237be43fe5f34680be5a464004ea3, type: 3}
+--- !u!114 &-1651179755403661898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,17 +93,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8534840625918500507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4833935922243343018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73747c6f173fb934fac1b7db1409fa3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  number: 0
-  suit: joker
