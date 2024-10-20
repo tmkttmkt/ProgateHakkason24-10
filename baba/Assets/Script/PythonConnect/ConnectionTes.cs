@@ -20,7 +20,23 @@ public class ConnectionTest : MonoBehaviour
 
         public bool sflg;
     }
+    public RectTransform circleRectTransform; // キャンバス上の円のRectTransformを指定
+    public Canvas canvas; // 使用しているキャンバスの参照
 
+    // 0〜1のx, y座標に従って円を動かすメソッド
+    public void MoveCircleOnCanvas(float x, float y)
+    {
+        // キャンバスのサイズを取得
+        float canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
+        float canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
+
+        // 0〜1の範囲の座標をキャンバスのサイズに変換
+        float targetX = x * canvasWidth;
+        float targetY = y * canvasHeight;
+
+        // RectTransformの位置を更新（アンカーの基準は中央）
+        circleRectTransform.anchoredPosition = new Vector2(targetX, targetY);
+    }
     void Start()
     {
         //�f�[�^��M�����̃R�[���o�b�N��o�^
@@ -73,7 +89,7 @@ public class ConnectionTest : MonoBehaviour
         yield return StartCoroutine(WaitForTrue());
         mousedowmn =false;
         Debug.Log(time - Time.realtimeSinceStartup);
-        gameManager.Vector2=new Vector2(transform.position.x, transform.position.y);
+        gameManager.Vector2=new Vector2(circleRectTransform.position.x,circleRectTransform.position.y);
         yield break;
 
     }
@@ -102,6 +118,7 @@ public class ConnectionTest : MonoBehaviour
     public void OnDataReceived(DataClass data)
     {
         HandDataClass mainmata = data as HandDataClass;
+        MoveCircleOnCanvas(mainmata.x-0.5f, (1-mainmata.y)/2);
         transform.position = GetWorldPosition(mainmata.x, 1-mainmata.y);
         if (pastmouse != mainmata.mousedown) { 
             mousedowmn = mainmata.mousedown;

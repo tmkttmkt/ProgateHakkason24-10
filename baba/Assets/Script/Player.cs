@@ -5,22 +5,41 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public NPC npc; // NPC�̃X�N���v�g���Q��
-    public List<GameObject> hands = new List<GameObject>(); // �v���C���[�̎�D
-                                                            // �v���C���[���J�[�h�����
+    public NPC npc; // NPC�ｿｽﾌス�ｿｽN�ｿｽ�ｿｽ�ｿｽv�ｿｽg�ｿｽ�ｿｽ�ｿｽQ�ｿｽ�ｿｽ
+    public List<GameObject> hands = new List<GameObject>(); // �ｿｽv�ｿｽ�ｿｽ�ｿｽC�ｿｽ�ｿｽ�ｿｽ[�ｿｽﾌ趣ｿｽD
+                                                            // �ｿｽv�ｿｽ�ｿｽ�ｿｽC�ｿｽ�ｿｽ�ｿｽ[�ｿｽ�ｿｽ�ｿｽJ�ｿｽ[�ｿｽh�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ
     bool IsOverlapping(RectTransform rectTransform, Vector2 point)
     {
-        // �J������UI��\�����Ă��邽�߂̃J�������擾�i�ʏ��Canvas��Render Mode�ɉ����ĈقȂ�j
+        // �ｿｽJ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽUI�ｿｽ�ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾄゑｿｽ�ｿｽ驍ｽ�ｿｽﾟのカ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ謫ｾ�ｿｽi�ｿｽﾊ擾ｿｽ�ｿｽCanvas�ｿｽ�ｿｽRender Mode�ｿｽﾉ会ｿｽ�ｿｽ�ｿｽ�ｿｽﾄ異なゑｿｽj
         Camera cam = null;
 
-        // �w�肵�����W���l�p�`���ɂ��邩���`�F�b�N
+        // �ｿｽw�ｿｽ閧ｵ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽW�ｿｽ�ｿｽ�ｿｽl�ｿｽp�ｿｽ`�ｿｽ�ｿｽ�ｿｽﾉゑｿｽ�ｿｽ驍ｩ�ｿｽ�ｿｽ�ｿｽ`�ｿｽF�ｿｽb�ｿｽN
         return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, point, cam);
+    }
+    public bool IsCircleCenterInsideRectangle(RectTransform  rectangleRectTransform,Vector2 circleCenter ){
+
+        // 四角形の位置とサイズを取得
+        Vector2 rectPosition = rectangleRectTransform.anchoredPosition;
+        Vector2 rectSize = rectangleRectTransform.sizeDelta;
+
+        // 四角形の境界を計算
+        float rectMinX = rectPosition.x - rectSize.x / 2;
+        float rectMaxX = rectPosition.x + rectSize.x / 2;
+        float rectMinY = rectPosition.y - rectSize.y / 2;
+        float rectMaxY = rectPosition.y + rectSize.y / 2;
+
+        // 円の中心が四角形の境界内にあるかどうかを判定
+        bool isInsideX = circleCenter.x >= rectMinX && circleCenter.x <= rectMaxX;
+        bool isInsideY = circleCenter.y >= rectMinY && circleCenter.y <= rectMaxY;
+        Debug.Log(isInsideX.ToString()+"|"+isInsideY.ToString());
+        // XとY両方で範囲内にある場合は「当たっている」
+        return isInsideX && isInsideY;
     }
     public void TakeTurn(Vector2 xy)
     {
-        // �v���C���[�̃^�[���ł̏���
+        // �ｿｽv�ｿｽ�ｿｽ�ｿｽC�ｿｽ�ｿｽ�ｿｽ[�ｿｽﾌタ�ｿｽ[�ｿｽ�ｿｽ�ｿｽﾅの擾ｿｽ�ｿｽ�ｿｽ
         Debug.Log("Player is taking a turn");
-        // NPC�̎�D���烉���_����1����鏈��
+        // NPC�ｿｽﾌ趣ｿｽD�ｿｽ�ｿｽ�ｿｽ辜会ｿｽ�ｿｽ�ｿｽ_�ｿｽ�ｿｽ�ｿｽ�ｿｽ1�ｿｽ�ｿｽ�ｿｽ�ｿｽ髀茨ｿｽ�ｿｽ
         if (npc.hands.Count > 0)
         {
             /*int randomIndex = Random.Range(0, npc.hands.Count);
@@ -35,8 +54,9 @@ public class Player : MonoBehaviour
                 if (rect == null) continue;
                 Debug.Log(rect.position);
                 Debug.Log(xy);
-                if (IsOverlapping(rect, xy))
+                if (IsCircleCenterInsideRectangle(rect, xy))
                 {
+                Debug.Log("言ってるね");
                     obj =cardobj;
                     break;
                 }
@@ -48,35 +68,35 @@ public class Player : MonoBehaviour
                 npc.hands.Remove(obj);
                 CheckForPairs();
                 SetCardFaceUp(obj);
-                GameManager.Instance.EndTurn(); // �^�[���I��
+                GameManager.Instance.EndTurn(); // �ｿｽ^�ｿｽ[�ｿｽ�ｿｽ�ｿｽI�ｿｽ�ｿｽ
             }
             else{
                 GameManager.Instance.StartTurn();
             }
 
-            // �J�[�h��\�����ɂ��鏈��
+            // �ｿｽJ�ｿｽ[�ｿｽh�ｿｽ�ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾉゑｿｽ�ｿｽ髀茨ｿｽ�ｿｽ
         }
         else
         {
             GameManager.Instance.StartTurn();
         }
 
-        // �y�A������
+        // �ｿｽy�ｿｽA�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ
     }
 
-    // �J�[�h��\�����ɂ��鏈��
+    // �ｿｽJ�ｿｽ[�ｿｽh�ｿｽ�ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾉゑｿｽ�ｿｽ髀茨ｿｽ�ｿｽ
     public void SetCardFaceUp(GameObject card)
     {
         Debug.Log("SetCardFaceUp");
         Card cardComponent = card.GetComponent<Card>();
         if (cardComponent != null)
         {
-            cardComponent.isFaceUp = true; // �\�����ɐݒ�
+            cardComponent.isFaceUp = true; // �ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾉ設抵ｿｽ
             UpdateCardAppearance(card);
         }
     }
 
-    // �J�[�h�̌����ڂ��X�V���鏈��
+    // �ｿｽJ�ｿｽ[�ｿｽh�ｿｽﾌ鯉ｿｽ�ｿｽ�ｿｽ�ｿｽﾚゑｿｽ�ｿｽX�ｿｽV�ｿｽ�ｿｽ�ｿｽ髀茨ｿｽ�ｿｽ
     private void UpdateCardAppearance(GameObject card)
     {
         Card cardComponent = card.GetComponent<Card>();
@@ -85,8 +105,8 @@ public class Player : MonoBehaviour
         if (cardComponent != null && imageComponent != null)
         {
 
-                imageComponent.sprite = cardComponent.faceUpSprite; // �\�����̉摜
-                Debug.Log(card.name + " player��\�����ɍX�V���܂����B");
+                imageComponent.sprite = cardComponent.faceUpSprite; // �ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾌ画像
+                //Debug.Log(card.name + " player�ｿｽ�ｿｽ\�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽﾉ更�ｿｽV�ｿｽ�ｿｽ�ｿｽﾜゑｿｽ�ｿｽ�ｿｽ�ｿｽB");
         }
     }
 
@@ -104,12 +124,12 @@ public class Player : MonoBehaviour
                 Card card2 = hands[j].GetComponent<Card>();
                 if (card1 == null)
                 {
-                    Debug.Log("card1 == NUll" + hands[i].name);
+                    //Debug.Log("card1 == NUll" + hands[i].name);
                     continue;
                 }
                 else if (card2 == null)
                 {
-                    Debug.Log("card 2 == NUll" + hands[j].name);
+                    //Debug.Log("card 2 == NUll" + hands[j].name);
                     continue;
                 }
                 if (card1.number == card2.number)
