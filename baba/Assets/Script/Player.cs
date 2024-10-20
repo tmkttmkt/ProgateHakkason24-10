@@ -5,9 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public NPC npc; // NPCのスクリプトを参照
+    public ConnectionTest connection;
     public List<GameObject> hands = new List<GameObject>(); // プレイヤーの手札
+                                                            // プレイヤーがカードを取る
+    bool IsOverlapping(RectTransform rectTransform, Vector2 point)
+    {
+        // カメラがUIを表示しているためのカメラを取得（通常はCanvasのRender Modeに応じて異なる）
+        Camera cam = null;
 
-    // プレイヤーがカードを取る
+        // 指定した座標が四角形内にあるかをチェック
+        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, point, cam);
+    }
     public void TakeTurn()
     {
         // プレイヤーのターンでの処理
@@ -29,6 +37,25 @@ public class Player : MonoBehaviour
             GameObject pickedCard = npc.hands[randomIndex];
             hands.Add(pickedCard);//カード以外がアタッチする可能性がある
             npc.hands.RemoveAt(randomIndex);
+            
+            /*GameObject obj=null;
+            Vector2 xy=connection.GetData();
+            foreach (GameObject cardobj in npc.hands)
+            {
+                RectTransform rect=cardobj.GetComponent<RectTransform>();
+                if (rect == null) continue;
+                if (IsOverlapping(rect, xy))
+                {
+                    obj =cardobj;
+                    break;
+                }
+            }
+            if (obj != null)
+            {
+                obj.transform.SetParent(transform);
+                hands.Add(obj);
+                npc.hands.Remove(obj);
+            }*/
         }
         else
         {

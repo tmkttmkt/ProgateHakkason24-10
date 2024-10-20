@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ConnectionTest : MonoBehaviour
 {
+    private bool mousedowmn = false;
+    private bool pastmouse;
     private class flg
     {
         public flg(bool testValue0)
@@ -62,6 +64,18 @@ public class ConnectionTest : MonoBehaviour
     {
         Debug.Log("Stopped");
     }
+    public Vector2 GetData()
+    {
+        StartCoroutine(WaitForTrue());
+        mousedowmn=false;
+        return new Vector2(transform.position.x, transform.position.y);
+
+    }
+    IEnumerator WaitForTrue()
+    {
+
+        yield return new WaitUntil(() => mousedowmn);
+    }
     // x��y��0~1�͈̔͂ŁA���[���h���W���擾����֐�
     public Vector3 GetWorldPosition(float x, float y)
     {
@@ -81,6 +95,10 @@ public class ConnectionTest : MonoBehaviour
     {
         HandDataClass mainmata = data as HandDataClass;
         transform.position = GetWorldPosition(mainmata.x, 1-mainmata.y);
+        if (pastmouse != mainmata.mousedown) { 
+            mousedowmn = mainmata.mousedown;
+        }
+        pastmouse = mainmata.mousedown;
     }
     //�f�[�^��M���̃R�[���o�b�N
     public void OnTestDataReceived(DataClass data)

@@ -325,7 +325,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 524801676}
-  - component: {fileID: 524801675}
   - component: {fileID: 524801677}
   m_Layer: 0
   m_Name: GameManager
@@ -334,21 +333,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &524801675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524801674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c6622bf5a7bce45898b45d9d70083d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 0}
-  player: {fileID: 0}
-  resultText: {fileID: 0}
 --- !u!4 &524801676
 Transform:
   m_ObjectHideFlags: 0
@@ -476,8 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa4ad33fdf70e5448bdced8efb0b63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - {fileID: 877694698}
+  deck: []
   playerHand: {fileID: 1297706815}
   npcHand: {fileID: 1693670391}
   cardBackPrefab: {fileID: 2760377111869021340, guid: 237558ee876ced94d8b534ee1fd703c6, type: 3}
@@ -613,9 +596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5696aec29404ce74da99e6cf6786eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 0}
-  hands:
-  - {fileID: 1297706814}
+  npc: {fileID: 1693670395}
+  connection: {fileID: 2136488841}
+  hands: []
 --- !u!1 &1298913985
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,9 +830,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2136488838}
   - component: {fileID: 2136488837}
-  - component: {fileID: 2136488841}
   - component: {fileID: 2136488840}
   - component: {fileID: 2136488839}
+  - component: {fileID: 2136488841}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged

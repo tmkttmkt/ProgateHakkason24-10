@@ -14,6 +14,7 @@ public class NPC : MonoBehaviour
         {
             int randomIndex = Random.Range(0, playerHand.Count);
             GameObject pickedCard = playerHand[randomIndex];
+            pickedCard.transform.SetParent(transform);
             hands.Add(pickedCard);
             playerHand.RemoveAt(randomIndex);
         }
