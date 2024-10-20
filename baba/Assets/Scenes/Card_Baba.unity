@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.848755}
-  m_SizeDelta: {x: 0, y: -1186.8743}
+  m_AnchoredPosition: {x: 0, y: -592.58984}
+  m_SizeDelta: {x: 0, y: -30608.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216639494
 MonoBehaviour:
@@ -285,7 +285,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1000
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -519,8 +519,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -809.6}
-  m_SizeDelta: {x: 0, y: -1619.2}
+  m_AnchoredPosition: {x: 0, y: -18974.969}
+  m_SizeDelta: {x: -0.0078125, y: -37949.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297706816
 MonoBehaviour:
@@ -573,13 +573,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 5
+    m_Right: 5
+    m_Top: 5
+    m_Bottom: 5
   m_ChildAlignment: 4
   m_Spacing: 5
-  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -599,7 +599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 1693670395}
-  hands: []
+  hands:
+  - {fileID: 1297706814}
 --- !u!1 &1298913985
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,9 +650,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferencePixelsPerUnit: 1000
+  m_ScaleFactor: 0.01
+  m_ReferenceResolution: {x: 1000, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -668,15 +669,15 @@ Canvas:
   m_GameObject: {fileID: 1298913985}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 425818821}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -740,8 +741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 809.6}
-  m_SizeDelta: {x: 0, y: -1619.2}
+  m_AnchoredPosition: {x: 0, y: 18613}
+  m_SizeDelta: {x: 0, y: -37226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693670392
 MonoBehaviour:
@@ -756,13 +757,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 5
+    m_Right: 5
+    m_Top: 5
+    m_Bottom: 5
   m_ChildAlignment: 4
   m_Spacing: 5
-  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -819,8 +820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f09cbbf4d51b1438b8921f0f41bf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hands: []
-  field: []
+  hands:
+  - {fileID: 1693670390}
+  field:
+  - {fileID: 216639492}
 --- !u!1 &2136488833
 GameObject:
   m_ObjectHideFlags: 0

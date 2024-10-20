@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         //if (CheckForWinner()) return;
 
         // �^�[�������
-        isPlayerTurn = (isPlayerTurn + 1) % 2;
+        isPlayerTurn = (isPlayerTurn + 1) % 2;//ターンを入れ替える
         StartTurn();
     }
 

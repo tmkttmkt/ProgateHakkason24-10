@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public int number; // �J�[�h�̐��� (1�`13: �X�[�g, 14: �W���[�J�[)
+    public int number;
     public string suit; // �J�[�h�̃X�[�g (e.g. "Hearts", "Diamonds", etc.)
+    public bool isFaceUp = true;
+    public Sprite faceUpSprite;  // 表向きの画像
+    public Sprite faceDownSprite; // 裏向きの画像
 
     void Start()
     {
-
+        // 裏向きの画像をResourcesからロードする
+        faceDownSprite = Resources.Load<Sprite>("Cards/card_back");
     }
 
     // Update is called once per frame

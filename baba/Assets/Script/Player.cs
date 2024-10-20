@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,14 +19,13 @@ public class Player : MonoBehaviour
     public void TakeTurn(Vector2 xy)
     {
         // �v���C���[�̃^�[���ł̏���
-        // ������UI��J�[�h�I���̏�����ǉ����� (��: �J�[�h���N���b�N����NPC�������)
         Debug.Log("Player is taking a turn");
         // NPC�̎�D���烉���_����1����鏈��
         if (npc.hands.Count > 0)
         {
             /*int randomIndex = Random.Range(0, npc.hands.Count);
             GameObject pickedCard = npc.hands[randomIndex];
-            hands.Add(pickedCard);//�J�[�h�ȊO���A�^�b�`����\��������
+            hands.Add(pickedCard);
             npc.hands.RemoveAt(randomIndex);
             */
             GameObject obj=null;
@@ -47,39 +47,67 @@ public class Player : MonoBehaviour
                 hands.Add(obj);
                 npc.hands.Remove(obj);
                 CheckForPairs();
+                SetCardFaceUp(obj);
                 GameManager.Instance.EndTurn(); // �^�[���I��
             }
             else{
                 GameManager.Instance.StartTurn();
             }
+
+            // �J�[�h��\�����ɂ��鏈��
         }
         else
         {
             GameManager.Instance.StartTurn();
         }
-        // �y�A������΍폜
+
+        // �y�A������
+    }
+
+    // �J�[�h��\�����ɂ��鏈��
+    public void SetCardFaceUp(GameObject card)
+    {
+        Debug.Log("SetCardFaceUp");
+        Card cardComponent = card.GetComponent<Card>();
+        if (cardComponent != null)
+        {
+            cardComponent.isFaceUp = true; // �\�����ɐݒ�
+            UpdateCardAppearance(card);
+        }
+    }
+
+    // �J�[�h�̌����ڂ��X�V���鏈��
+    private void UpdateCardAppearance(GameObject card)
+    {
+        Card cardComponent = card.GetComponent<Card>();
+        Image imageComponent = card.GetComponent<Image>();
+
+        if (cardComponent != null && imageComponent != null)
+        {
+
+                imageComponent.sprite = cardComponent.faceUpSprite; // �\�����̉摜
+                Debug.Log(card.name + " player��\�����ɍX�V���܂����B");
+        }
     }
 
     public void CheckForPairs()
     {
-        // �t���Ń��[�v���邱�ƂŃC���f�b�N�X�̖������
-        for ( int i = 0;  i <  hands.Count; i++)
+        for (int i = 0; i < hands.Count; i++)
         {
             Card card1 = hands[i].GetComponent<Card>();
-            for (int j = 0; j <  hands.Count; j++)
+            for (int j = 0; j < hands.Count; j++)
             {
                 if (i == j)
                 {
                     continue;
                 }
                 Card card2 = hands[j].GetComponent<Card>();
-                if(card1 == null)
+                if (card1 == null)
                 {
                     Debug.Log("card1 == NUll" + hands[i].name);
                     continue;
                 }
-                else
-                if(card2 == null)
+                else if (card2 == null)
                 {
                     Debug.Log("card 2 == NUll" + hands[j].name);
                     continue;
@@ -98,7 +126,7 @@ public class Player : MonoBehaviour
                         hands.RemoveAt(j);
                         hands.RemoveAt(i);
                     }
-                    i = -1; // ���̊O�����[�v�� i = 0 ����n�܂�悤�ɂ���
+                    i = -1;
                     break;
                 }
             }
