@@ -363,6 +363,8 @@ MonoBehaviour:
   npc: {fileID: 1693670395}
   player: {fileID: 1297706819}
   resultText: {fileID: 0}
+  connection: {fileID: 2136488841}
+  Vector2: {x: 0, y: 0}
 --- !u!1 &551093601
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 1693670395}
-  connection: {fileID: 2136488841}
   hands: []
 --- !u!1 &1298913985
 GameObject:
@@ -954,6 +955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218985852f540ce4badb98d9585044fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousedowmn: 0
+  pastmouse: 0
+  gameManager: {fileID: 524801677}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

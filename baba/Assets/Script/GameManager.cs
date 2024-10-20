@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Player player; // �v���C���[�̃X�N���v�g���Q��
     public Text resultText; // ���s���ʂ�\������UI�e�L�X�g
     private int isPlayerTurn; // ���݂̃^�[�����v���C���[���ǂ���
+    public ConnectionTest connection;
+    public Vector2 Vector2;
 
     void Awake()
     {
@@ -54,13 +57,25 @@ public class GameManager : MonoBehaviour
         if (isPlayerTurn != 0)
         {
             Debug.Log("Player's Turn");
-            player.TakeTurn(); // �v���C���[���J�[�h�����
+            StartCoroutine(PlayerTurn()); // �v���C���[���J�[�h�����
         }
         else
         {
             Debug.Log("NPC's Turn");
             StartCoroutine(NPCTurn()); // NPC�̃^�[�����J�n
         }
+    }
+    IEnumerator PlayerTurn()
+    {
+        if (npc == null || player == null || player.hands == null)
+        {
+            Debug.LogError("NPC or Player is not properly initialized.");
+            yield break; // NPC��Player������������Ă��Ȃ��ꍇ�A�R���[�`�����I��
+        }
+        yield return new WaitForSeconds(1f);
+        yield return connection.GetData();
+        player.TakeTurn(Vector2);
+
     }
 
 

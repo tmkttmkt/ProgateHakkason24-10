@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using PythonConnection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ConnectionTest : MonoBehaviour
 {
-    private bool mousedowmn = false;
-    private bool pastmouse;
+    public bool mousedowmn = false;
+    public bool pastmouse;
+    public GameManager gameManager;
     private class flg
     {
         public flg(bool testValue0)
@@ -64,17 +67,22 @@ public class ConnectionTest : MonoBehaviour
     {
         Debug.Log("Stopped");
     }
-    public Vector2 GetData()
+    public IEnumerator GetData()
     {
-        StartCoroutine(WaitForTrue());
-        mousedowmn=false;
-        return new Vector2(transform.position.x, transform.position.y);
+        float time = Time.realtimeSinceStartup;
+        yield return StartCoroutine(WaitForTrue());
+        mousedowmn =false;
+        Debug.Log(time - Time.realtimeSinceStartup);
+        gameManager.Vector2=new Vector2(transform.position.x, transform.position.y);
+        yield break;
 
     }
-    IEnumerator WaitForTrue()
+    private IEnumerator WaitForTrue()
     {
-
-        yield return new WaitUntil(() => mousedowmn);
+        while (!mousedowmn)
+        {
+            yield return null; // 1フレーム待機
+        }
     }
     // x��y��0~1�͈̔͂ŁA���[���h���W���擾����֐�
     public Vector3 GetWorldPosition(float x, float y)

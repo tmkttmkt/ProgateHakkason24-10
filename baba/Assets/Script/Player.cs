@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public NPC npc; // NPCのスクリプトを参照
-    public ConnectionTest connection;
     public List<GameObject> hands = new List<GameObject>(); // プレイヤーの手札
                                                             // プレイヤーがカードを取る
     bool IsOverlapping(RectTransform rectTransform, Vector2 point)
@@ -16,30 +15,20 @@ public class Player : MonoBehaviour
         // 指定した座標が四角形内にあるかをチェック
         return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, point, cam);
     }
-    public void TakeTurn()
+    public void TakeTurn(Vector2 xy)
     {
         // プレイヤーのターンでの処理
         // ここでUIやカード選択の処理を追加する (例: カードをクリックしてNPCから引く)
         Debug.Log("Player is taking a turn");
-
-        if(npc == null)
-        {
-            Debug.Log("NPC == null");
-        }
-        else
-        {
-            Debug.Log("NPC != null");
-        }
         // NPCの手札からランダムに1枚取る処理
         if (npc.hands.Count > 0)
         {
-            int randomIndex = Random.Range(0, npc.hands.Count);
+            /*int randomIndex = Random.Range(0, npc.hands.Count);
             GameObject pickedCard = npc.hands[randomIndex];
             hands.Add(pickedCard);//カード以外がアタッチする可能性がある
             npc.hands.RemoveAt(randomIndex);
-            
-            /*GameObject obj=null;
-            Vector2 xy=connection.GetData();
+            */
+            GameObject obj=null;
             foreach (GameObject cardobj in npc.hands)
             {
                 RectTransform rect=cardobj.GetComponent<RectTransform>();
@@ -50,12 +39,13 @@ public class Player : MonoBehaviour
                     break;
                 }
             }
+            Debug.Log(obj);
             if (obj != null)
             {
                 obj.transform.SetParent(transform);
                 hands.Add(obj);
                 npc.hands.Remove(obj);
-            }*/
+            }
         }
         else
         {
