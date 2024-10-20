@@ -97,7 +97,7 @@ async def main_loop():
                     # 非同期でデータを送信
                     await send_data(x, y, cli.getnow())
 
-            await asyncio.sleep(1/30)  # 短い休止を挟むことでCPU負荷を軽減
+            await asyncio.sleep(1/15)  # 短い休止を挟むことでCPU負荷を軽減
 
     cap.release()
     cv2.destroyAllWindows()

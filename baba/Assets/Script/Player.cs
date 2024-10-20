@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public NPC npc; // NPC‚ÌƒXƒNƒŠƒvƒg‚ğQÆ
-    public List<GameObject> hands = new List<GameObject>(); // ƒvƒŒƒCƒ„[‚ÌèD
-                                                            // ƒvƒŒƒCƒ„[‚ªƒJ[ƒh‚ğæ‚é
+    public NPC npc; // NPCï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½Qï¿½ï¿½
+    public List<GameObject> hands = new List<GameObject>(); // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½D
+                                                            // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½
     bool IsOverlapping(RectTransform rectTransform, Vector2 point)
     {
-        // ƒJƒƒ‰‚ªUI‚ğ•\¦‚µ‚Ä‚¢‚é‚½‚ß‚ÌƒJƒƒ‰‚ğæ“¾i’Êí‚ÍCanvas‚ÌRender Mode‚É‰‚¶‚ÄˆÙ‚È‚éj
+        // ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚½ï¿½ß‚ÌƒJï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½iï¿½Êï¿½ï¿½Canvasï¿½ï¿½Render Modeï¿½É‰ï¿½ï¿½ï¿½ï¿½ÄˆÙ‚È‚ï¿½j
         Camera cam = null;
 
-        // w’è‚µ‚½À•W‚ªlŠpŒ`“à‚É‚ ‚é‚©‚ğƒ`ƒFƒbƒN
+        // ï¿½wï¿½è‚µï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½lï¿½pï¿½`ï¿½ï¿½ï¿½É‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
         return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, point, cam);
     }
     public void TakeTurn(Vector2 xy)
     {
-        // ƒvƒŒƒCƒ„[‚Ìƒ^[ƒ“‚Å‚Ìˆ—
-        // ‚±‚±‚ÅUI‚âƒJ[ƒh‘I‘ğ‚Ìˆ—‚ğ’Ç‰Á‚·‚é (—á: ƒJ[ƒh‚ğƒNƒŠƒbƒN‚µ‚ÄNPC‚©‚çˆø‚­)
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½Å‚Ìï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½Jï¿½[ï¿½hï¿½Iï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½: ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         Debug.Log("Player is taking a turn");
-        // NPC‚ÌèD‚©‚çƒ‰ƒ“ƒ_ƒ€‚É1–‡æ‚éˆ—
+        // NPCï¿½Ìï¿½Dï¿½ï¿½ï¿½çƒ‰ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½éˆï¿½ï¿½
         if (npc.hands.Count > 0)
         {
             /*int randomIndex = Random.Range(0, npc.hands.Count);
             GameObject pickedCard = npc.hands[randomIndex];
-            hands.Add(pickedCard);//ƒJ[ƒhˆÈŠO‚ªƒAƒ^ƒbƒ`‚·‚é‰Â”\«‚ª‚ ‚é
+            hands.Add(pickedCard);//ï¿½Jï¿½[ï¿½hï¿½ÈŠOï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½`ï¿½ï¿½ï¿½ï¿½Â”\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             npc.hands.RemoveAt(randomIndex);
             */
             GameObject obj=null;
@@ -33,32 +33,36 @@ public class Player : MonoBehaviour
             {
                 RectTransform rect=cardobj.GetComponent<RectTransform>();
                 if (rect == null) continue;
+                Debug.Log(rect.position);
+                Debug.Log(xy);
                 if (IsOverlapping(rect, xy))
                 {
                     obj =cardobj;
                     break;
                 }
             }
-            Debug.Log(obj);
             if (obj != null)
             {
                 obj.transform.SetParent(transform);
                 hands.Add(obj);
                 npc.hands.Remove(obj);
+                CheckForPairs();
+                GameManager.Instance.EndTurn(); // ï¿½^ï¿½[ï¿½ï¿½ï¿½Iï¿½ï¿½
+            }
+            else{
+                GameManager.Instance.StartTurn();
             }
         }
         else
         {
-            Debug.Log("•‚¯‚Ä");
+            GameManager.Instance.StartTurn();
         }
-        // ƒyƒA‚ª‚ ‚ê‚Îíœ
-        CheckForPairs();
-        GameManager.Instance.EndTurn(); // ƒ^[ƒ“I—¹
+        // ï¿½yï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îíœ
     }
 
     public void CheckForPairs()
     {
-        // ‹t‡‚Åƒ‹[ƒv‚·‚é‚±‚Æ‚ÅƒCƒ“ƒfƒbƒNƒX‚Ì–â‘è‚ğ‰ñ”ğ
+        // ï¿½tï¿½ï¿½ï¿½Åƒï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚±ï¿½Æ‚ÅƒCï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½Ì–ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         for ( int i = 0;  i <  hands.Count; i++)
         {
             Card card1 = hands[i].GetComponent<Card>();
@@ -94,7 +98,7 @@ public class Player : MonoBehaviour
                         hands.RemoveAt(j);
                         hands.RemoveAt(i);
                     }
-                    i = -1; // Ÿ‚ÌŠO‘¤ƒ‹[ƒv‚ª i = 0 ‚©‚çn‚Ü‚é‚æ‚¤‚É‚·‚é
+                    i = -1; // ï¿½ï¿½ï¿½ÌŠOï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ i = 0 ï¿½ï¿½ï¿½ï¿½nï¿½Ü‚ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
                     break;
                 }
             }

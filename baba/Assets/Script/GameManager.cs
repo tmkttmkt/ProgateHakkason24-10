@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         StartTurn();
     }
 
-    void StartTurn()
+    public void StartTurn()
     {
         if (player == null || npc == null)
         {
