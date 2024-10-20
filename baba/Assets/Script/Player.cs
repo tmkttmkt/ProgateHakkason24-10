@@ -5,39 +5,37 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public NPC npc; // NPC�̃X�N���v�g���Q��
-    public List<GameObject> hands = new List<GameObject>(); // �v���C���[�̎�D
-                                                            // �v���C���[���J�[�h�����
+    public NPC npc; // NPCスクリプトへの参照
+    public List<GameObject> hands = new List<GameObject>(); // プレイヤーの手札
+
+    // プレイヤーのターンを進行
     bool IsOverlapping(RectTransform rectTransform, Vector2 point)
     {
-        // �J������UI��\�����Ă��邽�߂̃J�������擾�i�ʏ��Canvas��Render Mode�ɉ����ĈقȂ�j
+        // カメラがUIを正しく表示するための設定（通常CanvasのRender Modeに依存）
         Camera cam = null;
 
-        // �w�肵�����W���l�p�`���ɂ��邩���`�F�b�N
+        // 指定した座標が矩形内に含まれるかチェック
         return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, point, cam);
     }
+
     public void TakeTurn(Vector2 xy)
     {
-        // �v���C���[�̃^�[���ł̏���
+        // プレイヤーがターンを開始
         Debug.Log("Player is taking a turn");
-        // NPC�̎�D���烉���_����1����鏈��
+
+        // NPCの手札から1枚カードを選ぶ
         if (npc.hands.Count > 0)
         {
-            /*int randomIndex = Random.Range(0, npc.hands.Count);
-            GameObject pickedCard = npc.hands[randomIndex];
-            hands.Add(pickedCard);
-            npc.hands.RemoveAt(randomIndex);
-            */
-            GameObject obj=null;
+            GameObject obj = null;
             foreach (GameObject cardobj in npc.hands)
             {
-                RectTransform rect=cardobj.GetComponent<RectTransform>();
+                RectTransform rect = cardobj.GetComponent<RectTransform>();
                 if (rect == null) continue;
                 Debug.Log(rect.position);
                 Debug.Log(xy);
                 if (IsOverlapping(rect, xy))
                 {
-                    obj =cardobj;
+                    obj = cardobj;
                     break;
                 }
             }
@@ -48,35 +46,32 @@ public class Player : MonoBehaviour
                 npc.hands.Remove(obj);
                 CheckForPairs();
                 SetCardFaceUp(obj);
-                GameManager.Instance.EndTurn(); // �^�[���I��
+                GameManager.Instance.EndTurn(); // ターン終了
             }
-            else{
-                GameManager.Instance.StartTurn();
+            else
+            {
+                GameManager.Instance.StartTurn(); // 次のターン開始
             }
-
-            // �J�[�h��\�����ɂ��鏈��
         }
         else
         {
             GameManager.Instance.StartTurn();
         }
-
-        // �y�A������
     }
 
-    // �J�[�h��\�����ɂ��鏈��
+    // カードを表にする処理
     public void SetCardFaceUp(GameObject card)
     {
         Debug.Log("SetCardFaceUp");
         Card cardComponent = card.GetComponent<Card>();
         if (cardComponent != null)
         {
-            cardComponent.isFaceUp = true; // �\�����ɐݒ�
+            cardComponent.isFaceUp = true; // 表にする
             UpdateCardAppearance(card);
         }
     }
 
-    // �J�[�h�̌����ڂ��X�V���鏈��
+    // カードの見た目を更新
     private void UpdateCardAppearance(GameObject card)
     {
         Card cardComponent = card.GetComponent<Card>();
@@ -84,12 +79,12 @@ public class Player : MonoBehaviour
 
         if (cardComponent != null && imageComponent != null)
         {
-
-                imageComponent.sprite = cardComponent.faceUpSprite; // �\�����̉摜
-                Debug.Log(card.name + " player��\�����ɍX�V���܂����B");
+            imageComponent.sprite = cardComponent.faceUpSprite; // 表面のスプライトを設定
+            Debug.Log(card.name + " のカードが表になりました。");
         }
     }
 
+    // ペアがあるか確認して削除
     public void CheckForPairs()
     {
         for (int i = 0; i < hands.Count; i++)
@@ -97,25 +92,16 @@ public class Player : MonoBehaviour
             Card card1 = hands[i].GetComponent<Card>();
             for (int j = 0; j < hands.Count; j++)
             {
-                if (i == j)
-                {
-                    continue;
-                }
+                if (i == j) continue;
+
                 Card card2 = hands[j].GetComponent<Card>();
-                if (card1 == null)
-                {
-                    Debug.Log("card1 == NUll" + hands[i].name);
-                    continue;
-                }
-                else if (card2 == null)
-                {
-                    Debug.Log("card 2 == NUll" + hands[j].name);
-                    continue;
-                }
+                if (card1 == null || card2 == null) continue;
+
                 if (card1.number == card2.number)
                 {
                     Destroy(hands[i]);
                     Destroy(hands[j]);
+
                     if (i > j)
                     {
                         hands.RemoveAt(i);
@@ -126,6 +112,7 @@ public class Player : MonoBehaviour
                         hands.RemoveAt(j);
                         hands.RemoveAt(i);
                     }
+
                     i = -1;
                     break;
                 }
