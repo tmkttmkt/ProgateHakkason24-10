@@ -10,7 +10,6 @@ public class DeckManager : MonoBehaviour
     public Transform playerHand; // プレイヤーの手札位置
     public Transform npcHand; // NPCの手札位置
     public GameObject cardBackPrefab; // カードの裏面Prefab
-    Player player = new Player();
     public Player Player_deck;
     public NPC NPC_deck;
 
@@ -73,7 +72,7 @@ public class DeckManager : MonoBehaviour
             }
             // カードが配られた後はデッキから削除
             deck.Remove(card);
-            player.CheckForPairs();
+            Player_deck.CheckForPairs();
         }
     }
 }
